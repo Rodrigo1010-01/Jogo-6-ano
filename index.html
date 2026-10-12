@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b49">
+  <meta name="description" content="Uma aventura educativa pelas cidades, mitos, jogos e cultura da Grécia Antiga.">
+  <title>Jornada ao Olimpo — aventura pela Grécia Antiga</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-theme="olimpo">
+  <a class="skip-link" href="#main">Pular para o conteúdo do jogo</a>
+  <div class="sky" aria-hidden="true"><span class="star s1">✦</span><span class="star s2">✧</span><span class="star s3">✦</span></div>
+  <header class="topbar">
+    <a class="brand" href="#intro" aria-label="Jornada ao Olimpo, início"><span class="brand-mark">Ω</span><span>JORNADA <b>AO OLIMPO</b></span></a>
+    <div class="top-meta"><span class="pixel-tag">AVENTURA EDUCATIVA</span><span class="grade">HISTÓRIA · 6º ANO</span></div>
+    <div class="access-wrap"><button class="access-toggle" id="access-toggle" aria-expanded="false" aria-controls="access-panel"><span aria-hidden="true">◉</span> ACESSIBILIDADE</button>
+      <section class="access-panel" id="access-panel" aria-label="Opções de acessibilidade e som" hidden>
+        <div class="access-panel-head"><b>Configurações do jogo</b><button id="access-close" class="access-close" aria-label="Fechar configurações">×</button></div>
+        <label class="theme-control" for="theme-select"><span>Tema visual</span><select id="theme-select"><option value="olimpo">☁️ Céu do Olimpo</option><option value="mar">🌊 Mar Egeu</option><option value="areia">🏺 Areia dourada</option></select></label>
+        <div class="access-control"><span>Tamanho do texto</span><div class="text-size-controls" role="group" aria-label="Tamanho do texto"><button id="text-smaller" aria-label="Diminuir tamanho do texto">A−</button><button id="text-reset" aria-label="Tamanho normal do texto">A</button><button id="text-larger" aria-label="Aumentar tamanho do texto">A+</button></div></div>
+        <button class="access-option" id="contrast-toggle" aria-pressed="false"><span>◐</span><span><b>Alto contraste</b><small>Deixa textos e botões mais destacados.</small></span><i class="switch" aria-hidden="true"></i></button>
+        <button class="access-option" id="motion-toggle" aria-pressed="false"><span>◌</span><span><b>Reduzir animações</b><small>Diminui os movimentos decorativos.</small></span><i class="switch" aria-hidden="true"></i></button>
+        <button class="access-option" id="sound-toggle" aria-pressed="true"><span>♫</span><span><b>Sons do jogo</b><small>Toques curtos para respostas e fases.</small></span><i class="switch" aria-hidden="true"></i></button>
+        <p class="access-help">Dica: use Tab para navegar e Enter ou Espaço para selecionar.</p>
+      </section>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="screen intro-screen active" id="intro" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> UMA AVENTURA PELA GRÉCIA ANTIGA</div>
+        <h1 id="intro-title" tabindex="-1">Seu destino?<br><span>O Olimpo.</span></h1>
+        <p class="lead">Explore cidades-Estado, encontre os deuses, encare os jogos de Olímpia e descubra o legado grego.</p>
+        <div class="hero-facts"><div><span class="fact-icon">🗺️</span><span><b>4 fases</b><small>uma jornada histórica</small></span></div><div><span class="fact-icon">⭐</span><span><b>12 desafios</b><small>10 pontos por acerto</small></span></div></div>
+        <div class="character-intro" role="list" aria-label="Personagens que você vai encontrar">
+          <div role="listitem" class="character-chip athena-chip"><span aria-hidden="true">🦉</span><b>Atena</b></div><div role="listitem" class="character-chip zeus-chip"><span aria-hidden="true">⚡</span><b>Zeus</b></div><div role="listitem" class="character-chip poseidon-chip"><span aria-hidden="true">🔱</span><b>Poseidon</b></div><div role="listitem" class="character-chip kratos-chip"><span aria-hidden="true">💪</span><b>Kratos</b></div>
+        </div>
+        <p class="myth-note">Kratos representa a força na mitologia grega — ele é diferente do herói dos videogames.</p>
+        <div class="avatar-creator">
+          <div class="avatar-create-title"><span>🎨</span><div><b>Crie seu avatar</b><small>Quem vai viver esta aventura?</small></div></div>
+          <label class="player-name-label" for="player-name">NOME DO JOGADOR</label>
+          <input id="player-name" maxlength="18" autocomplete="nickname" placeholder="Digite seu nome" aria-label="Nome do jogador">
+          <div class="avatar-choices" role="group" aria-label="Escolha se seu personagem será menino ou menina">
+            <button type="button" class="avatar-choice selected" data-gender="menino" aria-pressed="true"><span class="avatar-face" aria-hidden="true">👦</span><span>Menino</span><span class="choice-check" aria-hidden="true">✓</span></button>
+            <button type="button" class="avatar-choice" data-gender="menina" aria-pressed="false"><span class="avatar-face" aria-hidden="true">👧</span><span>Menina</span><span class="choice-check" aria-hidden="true">✓</span></button>
+          </div>
+          <span class="player-name-label avatar-gallery-label">ESCOLHA A APARÊNCIA</span>
+          <div class="avatar-gallery" id="avatar-gallery" role="group" aria-label="Escolha a aparência do seu avatar"></div>
+          <span id="avatar-status" class="visually-hidden" aria-live="polite"></span>
+          <div class="avatar-preview"><span class="preview-hero" id="preview-hero" aria-hidden="true"></span><span>Este avatar é você, <b id="preview-name">Explorador</b>!</span></div>
+        </div>
+        <button class="primary-btn" id="start-btn"><span>COMEÇAR A JORNADA</span><span aria-hidden="true">→</span></button>
+        <p class="microcopy">Sem pressa: depois de cada resposta, você descobre o porquê.</p>
+      </div>
+      <div class="hero-art" role="img" aria-label="Ilustração de um templo grego cercado por Zeus, Poseidon, Atena e Kratos">
+        <div class="moon"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
+        <div class="temple"><div class="roof"></div><div class="pediment"><span>✦</span></div><div class="temple-top"></div><div class="columns"><i></i><i></i><i></i><i></i><i></i></div><div class="temple-base"></div></div>
+        <div class="scene-friend friend-zeus"><span>⚡</span><b>ZEUS</b></div><div class="scene-friend friend-poseidon"><span>🔱</span><b>POSEIDON</b></div><div class="scene-friend friend-athena"><span>🦉</span><b>ATENA</b></div><div class="scene-friend friend-kratos"><span>💪</span><b>KRATOS</b></div>
+        <div class="hero-caption"><span class="caption-dot"></span> OLIMPO · GRÉCIA ANTIGA</div>
+        <span class="art-star as1">✦</span><span class="art-star as2">✧</span><span class="art-star as3">·</span>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">⌄</div>
+    </section>
+
+    <section class="screen game-screen" id="game" aria-labelledby="phase-title" hidden>
+      <div class="game-topline"><div class="journey-label"><span class="map-pin" aria-hidden="true">◆</span> SUA JORNADA</div><div class="game-player"><span class="game-player-avatar" id="game-player-avatar" aria-hidden="true"></span><span id="game-player-name">Explorador</span></div><div class="score-pill" aria-live="polite" aria-atomic="true"><span aria-hidden="true">✦</span><span id="score">0</span><small> PONTOS</small></div></div>
+      <div class="phase-track" id="phase-track" role="list" aria-label="Progresso das fases"></div>
+      <div class="friend-parade" role="list" aria-label="Seus amigos do Olimpo"><span class="parade-label" aria-hidden="true">AMIGOS DO OLIMPO</span><span role="listitem" class="parade-friend"><span aria-hidden="true">⚡</span> <b>Zeus</b></span><span role="listitem" class="parade-friend"><span aria-hidden="true">🔱</span> <b>Poseidon</b></span><span role="listitem" class="parade-friend"><span aria-hidden="true">🦉</span> <b>Atena</b></span><span role="listitem" class="parade-friend"><span aria-hidden="true">💪</span> <b>Kratos</b></span><span class="parade-spark" aria-hidden="true">✦ ✧ ✦</span></div>
+      <div class="game-layout">
+        <aside class="guide-card"><div class="guide-art" aria-hidden="true"><div class="guide-sun"></div><div class="guide-avatar" id="guide-avatar"></div><span class="guide-spark">✦</span></div><div class="guide-name" id="guide-name">AVENTUREIRO</div><p id="guide-message">O caminho começa aqui, explorador.</p><div class="guide-tip"><span aria-hidden="true">✧</span><span id="guide-tip">Leia a explicação após cada resposta. É assim que se aprende!</span></div></aside>
+        <article class="question-card">
+          <div class="question-scene" id="question-scene" aria-hidden="true"></div>
+          <div class="question-meta"><span id="phase-kicker">FASE 1</span><span id="question-count">DESAFIO 1 DE 12</span></div>
+          <h2 id="phase-title" tabindex="-1">As cidades gregas</h2>
+          <div class="phase-rule"></div>
+          <p class="question-text" id="question-text" tabindex="-1" aria-live="polite"></p>
+          <div class="answers" id="answers" role="group" aria-label="Alternativas"></div>
+          <div class="feedback" id="feedback" aria-live="polite" hidden></div>
+          <div class="question-actions"><button class="back-btn" id="back-btn" type="button"><span aria-hidden="true">←</span><span>VOLTAR</span></button><button class="next-btn" id="next-btn" hidden><span>PRÓXIMO DESAFIO</span><span aria-hidden="true">→</span></button></div>
+        </article>
+      </div>
+      <div class="game-footer"><span><span class="footer-spark">✦</span> CADA ACERTO VALE 10 PONTOS</span><span id="streak-label">A jornada é sua. Boa sorte!</span></div>
+    </section>
+
+    <section class="screen end-screen" id="ending" aria-labelledby="end-title" hidden>
+      <div class="end-emblem" aria-hidden="true"><span>✦</span><b>Ω</b></div><p class="eyebrow centered">JORNADA CONCLUÍDA</p><h1 id="end-title" tabindex="-1"><span id="end-title-role">Herói</span> do<br><span>Conhecimento!</span></h1><p class="end-copy" id="end-copy"></p>
+      <div class="final-score"><span>SUA PONTUAÇÃO</span><b><span id="final-score">0</span><small> / 120</small></b><div class="score-track"><i id="score-fill"></i></div></div>
+      <div class="medals" id="medals"></div><button class="primary-btn replay-btn" id="replay-btn"><span>JOGAR NOVAMENTE</span><span aria-hidden="true">↻</span></button><p class="microcopy">A Grécia Antiga ainda guarda muitas histórias. Continue explorando!</p>
+    </section>
+  </main>
+  <footer class="site-footer"><span>JORNADA AO OLIMPO</span><span>APRENDER TAMBÉM É UMA AVENTURA <b>✦</b></span></footer>
+</body>
+</html>
